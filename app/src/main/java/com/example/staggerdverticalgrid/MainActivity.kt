@@ -2,6 +2,7 @@ package com.example.staggerdverticalgrid
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.compose.foundation.InteractionState
 import androidx.compose.foundation.ScrollableColumn
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -9,6 +10,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
+import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -61,6 +63,10 @@ fun Card(
     Surface(
         modifier = modifier.padding(4.dp).clickable(
             onClick = { },
+            indication = rememberRipple(
+                color = color.value.rippleColor()
+            ),
+            interactionState = remember { InteractionState() }
         ),
         color = color.value,
         elevation = 8.dp,
