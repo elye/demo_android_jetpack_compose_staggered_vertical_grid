@@ -6,6 +6,7 @@ import androidx.compose.foundation.InteractionState
 import androidx.compose.foundation.ScrollableColumn
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
 import androidx.compose.material.Surface
@@ -34,17 +35,18 @@ class MainActivity : AppCompatActivity() {
                         modifier = Modifier.fillMaxWidth()
                     )
                 }
-                ScrollableColumn {
-                    StaggeredVerticalGrid(
-                        maxColumnWidth = columnWidth.value.dp,
-                        modifier = Modifier.padding(4.dp)
-                    ) {
-                        (1..100).forEach {
-                            Card(it.toString(), columnWidth)
+                LazyColumn {
+                    item {
+                        StaggeredVerticalGrid(
+                            maxColumnWidth = columnWidth.value.dp,
+                            modifier = Modifier.padding(4.dp)
+                        ) {
+                            (1..100).forEach {
+                                Card(it.toString(), columnWidth)
+                            }
                         }
                     }
                 }
-
             }
         }
     }
